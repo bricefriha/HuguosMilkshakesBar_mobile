@@ -28,7 +28,7 @@ namespace HuguosMilkshakesBar.Viewmodels
             _posts = new ObservableCollection<Post>();
 
             // Get the posts
-            RefreshPostList().Wait();
+            RefreshPostList();
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace HuguosMilkshakesBar.Viewmodels
         {
             try
             {
-                Posts = await App.WService.ExecuteGet<ObservableCollection<Post>>("posts");
+                Posts = await App.WService.ExecuteGet<ObservableCollection<Post>>("posts/");
             }
             catch
             {

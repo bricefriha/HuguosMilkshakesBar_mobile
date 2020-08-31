@@ -14,7 +14,7 @@ namespace HuguosMilkshakesBar
             InitializeComponent();
 
             // Set the web service
-            WService = new Service("localhost");
+            WService = new Service("192.168.1.67", 3000);
 
             MainPage = new AppShell();
         }

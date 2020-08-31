@@ -16,7 +16,8 @@
                    Text="Home"
                    FontSize="25"
                    VerticalOptions="Center"
-                   TextColor="{DynamicResource GoodWhite}"/>
+                   TextColor="{DynamicResource GoodWhite}"
+                   FontFamily="{DynamicResource Semibold}"/>
         </Grid>
     </Shell.TitleView>
     <ContentPage.Content>
@@ -28,10 +29,10 @@
             <!-- Title -->
             <Label Grid.Row="0" 
                    Text="News"
-                   Margin="10,0,0,0"
+                   Margin="20,0,0,0"
                    FontSize="25"
-                   FontAttributes="Bold"
                    TextColor="{DynamicResource PrimaryColour}"
+                   FontFamily="{DynamicResource Bold}"
                    HorizontalOptions="StartAndExpand"
                    VerticalOptions="Center"/>
             <CollectionView Grid.Row="1"  ItemsSource="{Binding Posts}">
@@ -60,6 +61,7 @@
                                        FontSize="25"
                                        Text="{Binding Headline}"
                                        TextColor="{DynamicResource FontColour}"
+                                       FontFamily="{DynamicResource Bold}"
                                        />
                                 <!-- separator -->
                                 <BoxView Grid.Row="1"
@@ -72,18 +74,21 @@
                             </Grid>
                             <!-- Content -->
                             <Label Text="{Binding Content}"
-                                   Margin="10,0,10,0"
+                                   Margin="20,0,20,0"
                                    FontSize="15"
                                    Grid.Row="1"
                                    VerticalOptions="StartAndExpand"
                                    HorizontalOptions="CenterAndExpand"
                                    TextColor="{DynamicResource FontColour}"
+                                   FontFamily="{DynamicResource Regular}"
                                    />
                             <Label Text="{Binding CreatedDate}"
                                    TextColor="{DynamicResource FontColour}"
                                    Grid.Row="2"
-                                   Margin="10,0,0,0"
-                                   HorizontalOptions="Start"/>
+                                   FontSize="15"
+                                   Margin="20,0,0,0"
+                                   HorizontalOptions="Start"
+                                   FontFamily="{DynamicResource Semibold}"/>
 
 
 

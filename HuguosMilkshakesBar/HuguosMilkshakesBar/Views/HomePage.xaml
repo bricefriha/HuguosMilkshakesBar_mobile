@@ -82,7 +82,7 @@
                                    TextColor="{DynamicResource FontColour}"
                                    FontFamily="{DynamicResource Regular}"
                                    />
-                            <Label Text="{Binding CreatedDate}"
+                            <Label Text="{Binding Time}"
                                    TextColor="{DynamicResource FontColour}"
                                    Grid.Row="2"
                                    FontSize="15"

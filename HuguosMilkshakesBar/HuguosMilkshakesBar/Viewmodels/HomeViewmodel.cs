@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HuguosMilkshakesBar.Models;
@@ -38,7 +39,8 @@ namespace HuguosMilkshakesBar.Viewmodels
         {
             try
             {
-                Posts = await App.WService.ExecuteGet<ObservableCollection<Post>>("posts/");
+                // Get the posts and order them by date
+                Posts = new ObservableCollection<Post>((await App.WService.ExecuteGet<Collection<Post>>("posts/")).OrderBy(post => post.CreatedDate).Reverse());
             }
             catch
             {

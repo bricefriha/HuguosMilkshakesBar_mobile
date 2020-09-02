@@ -10,8 +10,8 @@
             <Button x:Name="btnSignIn"
                     Clicked="btnSignIn_Clicked"
                     CornerRadius="8"
-                    Margin="10"
-                    BackgroundColor="{DynamicResource SecondaryColour}"
+                    Margin="20"
+                    BackgroundColor="{DynamicResource FontColour}"
                     TextColor="{DynamicResource GoodWhite}"
                     Text="Sign In"
                     FontFamily="{DynamicResource SemiBold}"/>

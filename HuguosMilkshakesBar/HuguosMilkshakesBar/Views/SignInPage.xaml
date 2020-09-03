@@ -37,7 +37,8 @@
                            />
 
                     <Entry Grid.Column="1"
-                           Placeholder="Email or username"
+                           Placeholder="Email"
+                           Text="{Binding Usertag}"
                            />
                     
                 </Grid>
@@ -66,14 +67,21 @@
                     <Entry Grid.Column="1"
                            Placeholder="Password"
                            IsPassword="True"
+                           Text="{Binding Password}"
                            />
 
                 </Grid>
             </Frame>
+            <Label Text="{Binding ErrorMsg}"
+                   FontFamily="{DynamicResource Semibold}"
+                   TextColor="Red"
+                   Margin="0,20,0,20"
+                   />
             <Button Margin="30,5,30,5"
                     BackgroundColor="{DynamicResource PrimaryColour}"
                     TextColor="{DynamicResource BackgroundColour}"
                     BorderColor="{DynamicResource FontColour}"
+                    Command="{Binding SignIn}"
                     BorderWidth="0.1"
                     CornerRadius="15"
                     Text="Log in"

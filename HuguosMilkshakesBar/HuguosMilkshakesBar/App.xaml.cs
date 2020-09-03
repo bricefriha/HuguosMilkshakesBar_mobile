@@ -1,5 +1,6 @@
 ﻿using System;
 using CustardApi.Objects;
+using HuguosMilkshakesBar.Models;
 using HuguosMilkshakesBar.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -9,6 +10,7 @@ namespace HuguosMilkshakesBar
     public partial class App : Application
     {
         public static Service WService { set; get; }
+        public static User currentUser { set; get; }
         public App()
         {
             InitializeComponent();

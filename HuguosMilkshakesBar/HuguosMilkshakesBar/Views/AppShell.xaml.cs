@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using HuguosMilkshakesBar.Viewmodels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -14,7 +14,9 @@ namespace HuguosMilkshakesBar.Views
     {
         public AppShell()
         {
+            
             InitializeComponent();
+            BindingContext = new ShellViewmodel();
         }
 
         private async void btnSignIn_Clicked(object sender, EventArgs e)

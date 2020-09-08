@@ -2,20 +2,39 @@
 <Shell xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:HuguosMilkshakesBar.Views"
+            xmlns:Helpers="clr-namespace:HuguosMilkshakesBar.helpers"
              x:Class="HuguosMilkshakesBar.Views.AppShell"
        >
-    <Shell.FlyoutHeader>
-        <StackLayout BackgroundColor="{DynamicResource PrimaryColour}">
-            <!-- Sign in-->
-            <Button x:Name="btnSignIn"
-                    Clicked="btnSignIn_Clicked"
-                    CornerRadius="8"
-                    Margin="20"
-                    BackgroundColor="{DynamicResource FontColour}"
-                    TextColor="{DynamicResource GoodWhite}"
-                    Text="Sign In"
-                    FontFamily="{DynamicResource SemiBold}"/>
-        </StackLayout>
+    <Shell.Resources>
+        <Helpers:StringNullOrEmptyBoolConverter x:Key="NullToVisibilityConverter"/>
+        <Helpers:StringNotNullOrEmptyBoolConverter x:Key="StringNotNullOrEmptyBoolConverter"/>
+    </Shell.Resources>
+    <Shell.FlyoutHeader >
+        <Grid>
+            <!-- Background -->
+            <BoxView BackgroundColor="{DynamicResource PrimaryColour}"/>
+            <StackLayout Margin="20">
+                <Label Text="{Binding Username, StringFormat='Welcome {0}!'}"
+                       HorizontalOptions="Center"
+                       FontSize="30"
+                       FontFamily="{DynamicResource SemiBold}"
+                       TextColor="{DynamicResource GoodWhite}"
+                       IsVisible="{Binding Username,
+                                        Converter ={StaticResource NullToVisibilityConverter} }"
+                       />
+
+                <!-- Sign in-->
+                <Button x:Name="btnSignIn"
+                        Clicked="btnSignIn_Clicked"
+                        CornerRadius="8"
+                        BackgroundColor="{DynamicResource FontColour}"
+                        TextColor="{DynamicResource GoodWhite}"
+                        Text="Sign In"
+                        FontFamily="{DynamicResource SemiBold}"
+                        IsVisible="{Binding Username,
+                                        Converter ={StaticResource StringNotNullOrEmptyBoolConverter} }"/>
+            </StackLayout>
+            </Grid>
     </Shell.FlyoutHeader>
     <FlyoutItem Title="Todolists" >
 

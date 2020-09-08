@@ -77,6 +77,9 @@ namespace HuguosMilkshakesBar.Viewmodels
                         // Store the token
                         await SecureStorage.SetAsync("oauth_token", App.currentUser.Token);
 
+                        // Load the username
+                        (App.Current.MainPage.BindingContext as ShellViewmodel).LoadUsername();
+
                         // Back to the previous page
                         await App.Current.MainPage.Navigation.PopAsync(true);
                     }

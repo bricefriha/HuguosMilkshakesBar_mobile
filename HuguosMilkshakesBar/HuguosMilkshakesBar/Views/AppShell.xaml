@@ -44,6 +44,7 @@
                         Padding="3"
                         HorizontalOptions="CenterAndExpand"
                         VerticalOptions="CenterAndExpand"
+                        Command="{Binding SignOut}"
                         FontFamily="{DynamicResource Semibold}"
                         IsVisible="{Binding Username,
                                         Converter ={StaticResource NullToVisibilityConverter} }"/>

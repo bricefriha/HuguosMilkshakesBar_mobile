@@ -12,28 +12,22 @@ namespace HuguosMilkshakesBar.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AppShell : Shell
     {
+        private ShellViewmodel _vm;
         public AppShell()
         {
             
             InitializeComponent();
-            BindingContext = new ShellViewmodel();
+            BindingContext = _vm = new ShellViewmodel();
         }
 
         private async void btnSignIn_Clicked(object sender, EventArgs e)
         {
-            CloseFlyout();
+            _vm.CloseFlyout();
 
             // Navigate to sign in page
             await this.Navigation.PushAsync(new SignInPage());
 
         }
-        /// <summary>
-        /// Method to close the flyout
-        /// </summary>
-        private void CloseFlyout()
-        {
-            FlyoutBehavior = FlyoutBehavior.Disabled;
-            FlyoutBehavior = FlyoutBehavior.Flyout;
-        }
+        
     }
 }

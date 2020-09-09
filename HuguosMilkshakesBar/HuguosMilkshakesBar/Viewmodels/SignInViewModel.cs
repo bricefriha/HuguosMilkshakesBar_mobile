@@ -59,6 +59,7 @@ namespace HuguosMilkshakesBar.Viewmodels
                 return _signIn;
             }
         }
+       
         public SignInViewModel ()
         {
             _usertag = "brice.friha@email.com";

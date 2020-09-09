@@ -17,7 +17,7 @@
                 <Label Text="{Binding Username, StringFormat='Welcome {0}!'}"
                        HorizontalOptions="Center"
                        FontSize="30"
-                       FontFamily="{DynamicResource SemiBold}"
+                       FontFamily="{DynamicResource Semibold}"
                        TextColor="{DynamicResource GoodWhite}"
                        IsVisible="{Binding Username,
                                         Converter ={StaticResource NullToVisibilityConverter} }"
@@ -30,9 +30,23 @@
                         BackgroundColor="{DynamicResource FontColour}"
                         TextColor="{DynamicResource GoodWhite}"
                         Text="Sign In"
-                        FontFamily="{DynamicResource SemiBold}"
+                        FontFamily="{DynamicResource Semibold}"
                         IsVisible="{Binding Username,
                                         Converter ={StaticResource StringNotNullOrEmptyBoolConverter} }"/>
+                <!-- Sign out-->
+                <Button 
+                        CornerRadius="8"
+                        BackgroundColor="{DynamicResource FontColour}"
+                        TextColor="{DynamicResource GoodWhite}"
+                        Text="Sign Out"
+                        HeightRequest="40"
+                        WidthRequest="100"
+                        Padding="3"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="CenterAndExpand"
+                        FontFamily="{DynamicResource Semibold}"
+                        IsVisible="{Binding Username,
+                                        Converter ={StaticResource NullToVisibilityConverter} }"/>
             </StackLayout>
             </Grid>
     </Shell.FlyoutHeader>

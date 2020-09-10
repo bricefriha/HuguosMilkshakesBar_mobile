@@ -8,8 +8,12 @@
     <Shell.Resources>
         <Helpers:StringNullOrEmptyBoolConverter x:Key="NullToVisibilityConverter"/>
         <Helpers:StringNotNullOrEmptyBoolConverter x:Key="StringNotNullOrEmptyBoolConverter"/>
+        <ResourceDictionary>
+            <x:Double x:Key="itemFontSize">25</x:Double>
+            <x:Double x:Key="menuItemFontSize">20</x:Double>
+        </ResourceDictionary>
     </Shell.Resources>
-    <Shell.FlyoutHeader >
+    <Shell.FlyoutHeader>
         <Grid>
             <!-- Background -->
             <BoxView BackgroundColor="{DynamicResource PrimaryColour}"/>
@@ -17,8 +21,8 @@
                 <Label Text="{Binding Username, StringFormat='Welcome {0}!'}"
                        HorizontalOptions="Center"
                        FontSize="30"
-                       FontFamily="{DynamicResource Semibold}"
-                       TextColor="{DynamicResource GoodWhite}"
+                       FontFamily="{DynamicResource Bold}"
+                       TextColor="{DynamicResource FontColour}"
                        IsVisible="{Binding Username,
                                         Converter ={StaticResource NullToVisibilityConverter} }"
                        />
@@ -32,26 +36,56 @@
                         Text="Sign In"
                         FontFamily="{DynamicResource Semibold}"
                         IsVisible="{Binding Username,
-                                        Converter ={StaticResource StringNotNullOrEmptyBoolConverter} }"/>
+                                        Converter ={StaticResource StringNotNullOrEmptyBoolConverter} }">
+                    
+                </Button>
                 <!-- Sign out-->
                 <Button 
                         CornerRadius="8"
                         BackgroundColor="{DynamicResource FontColour}"
                         TextColor="{DynamicResource GoodWhite}"
-                        Text="Sign Out"
+                        Text="&#xf2f5;"
                         HeightRequest="40"
-                        WidthRequest="100"
+                        WidthRequest="50"
+                    FontSize="20"
                         Padding="3"
                         HorizontalOptions="CenterAndExpand"
                         VerticalOptions="CenterAndExpand"
                         Command="{Binding SignOut}"
-                        FontFamily="{DynamicResource Semibold}"
+                        FontFamily="{DynamicResource FA-Solid}"
                         IsVisible="{Binding Username,
-                                        Converter ={StaticResource NullToVisibilityConverter} }"/>
+                                        Converter ={StaticResource NullToVisibilityConverter} }">
+
+                    
+
+                </Button>
             </StackLayout>
             </Grid>
     </Shell.FlyoutHeader>
-    <FlyoutItem Title="Todolists" >
+    <!-- Template for the shell content-->
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <Grid HorizontalOptions="Center"
+                  >
+                <Grid.ColumnDefinitions>
+                    <!-- Icon -->
+                    <ColumnDefinition Width="*"/>
+                    <!-- Title-->
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <!-- Icon -->
+                <Label  Grid.Column="0"
+                        Margin="50,0,0,0"
+                        VerticalOptions="Center"
+                        Text="{Binding Icon}" 
+                        FontFamily="{DynamicResource FA-Solid}" 
+                        FontSize="{StaticResource itemFontSize}"
+                        TextColor="{StaticResource PrimaryColour}"/>
+                <Label Grid.Column="1" Text="{Binding Title}" FontSize="{StaticResource itemFontSize}" TextColor="{StaticResource FontColour}" HorizontalOptions="Start"  />
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+    <FlyoutItem Title="Home" Icon="&#xf0ac;" >
 
         <ShellContent x:Name="ItemsPage"
                           ContentTemplate="{DataTemplate views:HomePage}" />

@@ -47,7 +47,7 @@
                         Text="&#xf2f5;"
                         HeightRequest="40"
                         WidthRequest="50"
-                    FontSize="20"
+                        FontSize="20"
                         Padding="3"
                         HorizontalOptions="CenterAndExpand"
                         VerticalOptions="CenterAndExpand"

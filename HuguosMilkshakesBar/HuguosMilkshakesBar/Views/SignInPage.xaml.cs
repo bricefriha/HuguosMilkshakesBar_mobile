@@ -12,9 +12,10 @@ namespace HuguosMilkshakesBar.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SignInPage : ContentPage
     {
+        private SignInViewModel _vm;
         public SignInPage()
         {
-            BindingContext = new SignInViewModel();
+            BindingContext = _vm = new SignInViewModel();
             InitializeComponent();
         }
     }

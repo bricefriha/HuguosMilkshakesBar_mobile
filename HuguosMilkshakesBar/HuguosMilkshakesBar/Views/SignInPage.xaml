@@ -4,23 +4,69 @@
              x:Class="HuguosMilkshakesBar.Views.SignInPage"
              Shell.BackgroundColor="{DynamicResource FontColour}"
              BackgroundColor="{DynamicResource BackgroundColour}">
+    <Shell.TitleView>
+        <StackLayout HorizontalOptions="EndAndExpand">
+            <Button Text="Sign In"
+                    IsVisible="{Binding IsSignIn}"
+                    Command="{Binding SwitchFormType}"
+                    />
+            <Button Text="Sign up"
+                    IsVisible="{Binding IsSignUp}"
+                    Command="{Binding SwitchFormType}"
+                    />
+        </StackLayout>
+    </Shell.TitleView>
     <ContentPage.Resources>
         <ResourceDictionary>
             <x:Double x:Key="InputHeight">43</x:Double>
+            <Frame x:Key="formInput">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*"/>
+
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0"
+                           Text="&#xf007;"
+                           FontFamily="{StaticResource FA-Solid}"
+                           FontSize="20"
+                           TextColor="{DynamicResource PrimaryColour}"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           />
+
+                    <Entry Grid.Column="1"
+                           Placeholder="Email"
+                           Text="{Binding FormContent}"
+                           />
+
+                </Grid>
+            </Frame>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout Margin="0,150,0,0" Spacing="12">
+        <StackLayout Margin="0,130,0,0" Spacing="12">
             <Label Text="Sign In"
                    FontSize="35"
                    FontFamily="{DynamicResource Bold}"
                    TextColor="{DynamicResource FontColour}"
-                    HorizontalOptions="CenterAndExpand" />
+                    HorizontalOptions="CenterAndExpand"
+                   IsVisible="{Binding IsSignIn}"
+                   />
+            <Label Text="Sign Up"
+                   FontSize="35"
+                   FontFamily="{DynamicResource Bold}"
+                   TextColor="{DynamicResource FontColour}"
+                    HorizontalOptions="CenterAndExpand"
+                   IsVisible="{Binding IsSignUp}"
+                   />
             <!--Email or username-->
+
             <Frame Margin="30,5,30,5"
                    CornerRadius="15"
                    HeightRequest="{DynamicResource InputHeight}"
-                   Padding="10,3,40,3">
+                   Padding="10,3,40,3"
+                   IsVisible="{Binding IsSignIn}">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="30"/>
@@ -43,12 +89,154 @@
                     
                 </Grid>
             </Frame>
+            <!--Email-->
+
+            <Frame Margin="30,5,30,5"
+                   CornerRadius="15"
+                   HeightRequest="{DynamicResource InputHeight}"
+                   Padding="10,3,40,3"
+                   IsVisible="{Binding IsSignUp}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*"/>
+
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0"
+                           Text="&#xf007;"
+                           FontFamily="{StaticResource FA-Solid}"
+                           FontSize="20"
+                           TextColor="{DynamicResource PrimaryColour}"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           />
+
+                    <Entry Grid.Column="1"
+                           Placeholder="Email*"
+                           Text="{Binding Email}"
+                           />
+
+                </Grid>
+            </Frame>
+            <!-- firstName -->
+            <Frame Margin="30,5,30,5"
+                   CornerRadius="15"
+                   HeightRequest="{DynamicResource InputHeight}"
+                   Padding="10,3,40,3"
+                   IsVisible="{Binding IsSignUp}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*"/>
+
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0"
+                           Text="&#xf007;"
+                           FontFamily="{StaticResource FA-Solid}"
+                           FontSize="20"
+                           TextColor="{DynamicResource PrimaryColour}"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           />
+
+                    <Entry Grid.Column="1"
+                           Placeholder="Firstname*"
+                           Text="{Binding Firstname}"
+                           />
+
+                </Grid>
+            </Frame>
+            <!-- lastName -->
+            <Frame Margin="30,5,30,5"
+                   CornerRadius="15"
+                   HeightRequest="{DynamicResource InputHeight}"
+                   Padding="10,3,40,3"
+                   IsVisible="{Binding IsSignUp}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*"/>
+
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0"
+                           Text="&#xf007;"
+                           FontFamily="{StaticResource FA-Solid}"
+                           FontSize="20"
+                           TextColor="{DynamicResource PrimaryColour}"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           />
+
+                    <Entry Grid.Column="1"
+                           Placeholder="Lastname"
+                           Text="{Binding Lastname}"
+                           />
+
+                </Grid>
+            </Frame>
+            <!-- create a password -->
+            <Frame Margin="30,5,30,5"
+                   CornerRadius="15"
+                   HeightRequest="{DynamicResource InputHeight}"
+                   Padding="10,3,40,3"
+                   IsVisible="{Binding IsSignUp}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*"/>
+
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0"
+                           Text="&#xf007;"
+                           FontFamily="{StaticResource FA-Solid}"
+                           FontSize="20"
+                           TextColor="{DynamicResource PrimaryColour}"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           />
+
+                    <Entry Grid.Column="1"
+                           Placeholder="Password*"
+                           Text="{Binding Password}"
+                           />
+
+                </Grid>
+            </Frame>
+            <!-- Retype password -->
+            <Frame Margin="30,5,30,5"
+                   CornerRadius="15"
+                   HeightRequest="{DynamicResource InputHeight}"
+                   Padding="10,3,40,3"
+                   IsVisible="{Binding IsSignUp}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*"/>
+
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0"
+                           Text="&#xf007;"
+                           FontFamily="{StaticResource FA-Solid}"
+                           FontSize="20"
+                           TextColor="{DynamicResource PrimaryColour}"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           />
+
+                    <Entry Grid.Column="1"
+                           Placeholder="Password verification*"
+                           Text="{Binding PasswordV}"
+                           />
+
+                </Grid>
+            </Frame>
 
             <!-- Password -->
             <Frame Margin="30,5,30,5"
                    CornerRadius="15"
                    HeightRequest="{StaticResource InputHeight}"
-                   Padding="10,3,10,3">
+                   Padding="10,3,10,3"
+                   IsVisible="{Binding IsSignIn}">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="30"/>
@@ -82,9 +270,21 @@
                     TextColor="{DynamicResource BackgroundColour}"
                     BorderColor="{DynamicResource FontColour}"
                     Command="{Binding SignIn}"
+                    IsVisible="{Binding IsSignIn}"
                     BorderWidth="0.1"
                     CornerRadius="15"
                     Text="Log in"
+                    FontFamily="{DynamicResource Bold}"
+                    FontSize="18"/>
+            <Button Margin="30,5,30,5"
+                    BackgroundColor="{DynamicResource PrimaryColour}"
+                    TextColor="{DynamicResource BackgroundColour}"
+                    BorderColor="{DynamicResource FontColour}"
+                    Command="{Binding SignUp}"
+                    IsVisible="{Binding IsSignUp}"
+                    BorderWidth="0.1"
+                    CornerRadius="15"
+                    Text="Sign Up"
                     FontFamily="{DynamicResource Bold}"
                     FontSize="18"/>
 

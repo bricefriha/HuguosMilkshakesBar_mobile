@@ -59,9 +59,47 @@ namespace HuguosMilkshakesBar.Viewmodels
                 return _signIn;
             }
         }
-       
+        private Command _switchFormType;
+        public Command SwitchFormType
+        {
+            get
+            {
+                return _switchFormType;
+            }
+        }
+        private bool _isSignUp;
+        public bool IsSignUp
+        {
+            set
+            {
+                _isSignUp = value;
+
+                OnPropertyChanged();
+            }
+            get
+            {
+                return _isSignUp;
+            }
+        }
+        private bool _isSignIn;
+        public bool IsSignIn
+        {
+            set
+            {
+                _isSignIn = value;
+
+                OnPropertyChanged();
+            }
+            get
+            {
+                return _isSignIn;
+            }
+        }
         public SignInViewModel ()
         {
+            IsSignUp = false;
+            IsSignIn = true;
+
             _usertag = "brice.friha@email.com";
             _password = "pwd";
             _signIn = new Command(async () =>
@@ -69,7 +107,7 @@ namespace HuguosMilkshakesBar.Viewmodels
                 try
                 {
                     string requestBody = "{ \"email\" : \"" + Usertag + "\", \"password\":\"" + Password + "\"} ";
-
+                    
                     // Log in
                     App.currentUser = await App.WService.ExecutePost<User>("users", "authenticate", null, requestBody);
 
@@ -94,6 +132,18 @@ namespace HuguosMilkshakesBar.Viewmodels
                     throw new Exception(ex.Message);
                 }
             });
+            _switchFormType = new Command(() =>
+           {
+               try
+               {
+                   IsSignUp = !_isSignUp;
+                   IsSignIn = !_isSignIn;
+               }
+               catch (Exception ex)
+               {
+                   throw new Exception(ex.Message);
+               }
+           });
         }
     }
 }

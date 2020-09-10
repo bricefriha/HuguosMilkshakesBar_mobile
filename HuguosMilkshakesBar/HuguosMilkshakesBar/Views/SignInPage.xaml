@@ -5,13 +5,27 @@
              Shell.BackgroundColor="{DynamicResource FontColour}"
              BackgroundColor="{DynamicResource BackgroundColour}">
     <Shell.TitleView>
-        <StackLayout HorizontalOptions="EndAndExpand">
+        <StackLayout >
             <Button Text="Sign In"
-                    IsVisible="{Binding IsSignIn}"
+                    HorizontalOptions="EndAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    IsVisible="{Binding IsSignUp}"
+                    Margin="0,0,10,0"
+                    FontSize="19"
+                    FontFamily="{DynamicResource Bold}"
+                    TextColor="{DynamicResource PrimaryColour}"
+                    BackgroundColor="{DynamicResource FontColour}"
                     Command="{Binding SwitchFormType}"
                     />
             <Button Text="Sign up"
-                    IsVisible="{Binding IsSignUp}"
+                    IsVisible="{Binding IsSignIn}"
+                    HorizontalOptions="EndAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    Margin="0,0,10,0"
+                    FontSize="19"
+                    FontFamily="{DynamicResource Bold}"
+                    BackgroundColor="{DynamicResource FontColour}"
+                    TextColor="{DynamicResource PrimaryColour}"
                     Command="{Binding SwitchFormType}"
                     />
         </StackLayout>
@@ -45,7 +59,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout Margin="0,130,0,0" Spacing="12">
+        <StackLayout VerticalOptions="Center" Spacing="12">
             <Label Text="Sign In"
                    FontSize="35"
                    FontFamily="{DynamicResource Bold}"
@@ -187,7 +201,7 @@
 
                     </Grid.ColumnDefinitions>
                     <Label Grid.Column="0"
-                           Text="&#xf007;"
+                           Text="&#xf084;"
                            FontFamily="{StaticResource FA-Solid}"
                            FontSize="20"
                            TextColor="{DynamicResource PrimaryColour}"
@@ -197,6 +211,7 @@
 
                     <Entry Grid.Column="1"
                            Placeholder="Password*"
+                           IsPassword="True"
                            Text="{Binding Password}"
                            />
 
@@ -215,7 +230,7 @@
 
                     </Grid.ColumnDefinitions>
                     <Label Grid.Column="0"
-                           Text="&#xf007;"
+                           Text="&#xf084;"
                            FontFamily="{StaticResource FA-Solid}"
                            FontSize="20"
                            TextColor="{DynamicResource PrimaryColour}"
@@ -225,6 +240,7 @@
 
                     <Entry Grid.Column="1"
                            Placeholder="Password verification*"
+                           IsPassword="True"
                            Text="{Binding PasswordV}"
                            />
 

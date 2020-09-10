@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using HuguosMilkshakesBar.Models;
 using HuguosMilkshakesBar.Views;
 using MvvmHelpers;
+using Newtonsoft.Json;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -38,6 +40,45 @@ namespace HuguosMilkshakesBar.Viewmodels
                 return _usertag;
             }
         }
+        private string _email;
+        public string Email
+        {
+            set
+            {
+                _email = value;
+                OnPropertyChanged();
+            }
+            get
+            {
+                return _email;
+            }
+        }
+        private string _firstname;
+        public string Firstname
+        {
+            set
+            {
+                _firstname = value;
+                OnPropertyChanged();
+            }
+            get
+            {
+                return _firstname;
+            }
+        }
+        private string _lastname;
+        public string Lastname
+        {
+            set
+            {
+                _lastname = value;
+                OnPropertyChanged();
+            }
+            get
+            {
+                return _lastname;
+            }
+        }
         private string _password;
         public string Password
         {
@@ -51,12 +92,33 @@ namespace HuguosMilkshakesBar.Viewmodels
                 return _password;
             }
         }
+        private string _passwordV;
+        public string PasswordV
+        {
+            set
+            {
+                _passwordV = value;
+                OnPropertyChanged();
+            }
+            get
+            {
+                return _passwordV;
+            }
+        }
         private Command _signIn;
         public Command SignIn
         {
             get
             {
                 return _signIn;
+            }
+        }
+        private Command _signUp;
+        public Command SignUp
+        {
+            get
+            {
+                return _signUp;
             }
         }
         private Command _switchFormType;
@@ -101,31 +163,50 @@ namespace HuguosMilkshakesBar.Viewmodels
             IsSignIn = true;
 
             _usertag = "brice.friha@email.com";
+            _email = "Kevin.magnussen@email.com";
             _password = "pwd";
             _signIn = new Command(async () =>
             {
                 try
                 {
-                    string requestBody = "{ \"email\" : \"" + Usertag + "\", \"password\":\"" + Password + "\"} ";
-                    
-                    // Log in
-                    App.currentUser = await App.WService.ExecutePost<User>("users", "authenticate", null, requestBody);
-
-                    if (App.currentUser != null)
+                    await LogIn();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+            });
+            _signUp = new Command(async () =>
+            {
+                try
+                {
+                    // Verify is passwords match
+                    if (_password == _passwordV)
                     {
-                        // Store the token
-                        await SecureStorage.SetAsync("oauth_token", App.currentUser.Token);
+                        string requestBody = "{ \"email\" : \"" + _email + "\",\"firstname\" : \"" + _firstname + "\",\"lastname\" : \"" + _lastname + "\", \"password\":\"" + _password + "\"} ";
 
-                        // Load the username
-                        (App.Current.MainPage.BindingContext as ShellViewmodel).LoadUsername();
+                        try
+                        {
 
-                        // Back to the previous page
-                        await App.Current.MainPage.Navigation.PopAsync(true);
+                             await App.WService.ExecutePost("users", "create", null, requestBody);
+
+                            _switchFormType.Execute(null);
+                            // Todo: modify custard api to handle the error code
+                            //// Log in
+                            //await LogIn();
+
+                        }
+                        catch (Exception ex)
+                        {
+                            ErrorMsg = ex.Message;
+                        }
+                        
                     }
                     else
                     {
-                        ErrorMsg = "Nope";
+                        ErrorMsg = "Passwords doesn't match";
                     }
+                    
                 }
                 catch (Exception ex)
                 {
@@ -144,6 +225,30 @@ namespace HuguosMilkshakesBar.Viewmodels
                    throw new Exception(ex.Message);
                }
            });
+        }
+
+        private async Task LogIn()
+        {
+            string requestBody = "{ \"email\" : \"" + Email + "\", \"password\":\"" + Password + "\"} ";
+
+            // Log in
+            App.currentUser = await App.WService.ExecutePost<User>("users", "authenticate", null, requestBody);
+
+            if (App.currentUser != null)
+            {
+                // Store the token
+                await SecureStorage.SetAsync("oauth_token", App.currentUser.Token);
+
+                // Load the username
+                (App.Current.MainPage.BindingContext as ShellViewmodel).LoadUsername();
+
+                // Back to the previous page
+                await App.Current.MainPage.Navigation.PopAsync(true);
+            }
+            else
+            {
+                ErrorMsg = "Nope";
+            }
         }
     }
 }

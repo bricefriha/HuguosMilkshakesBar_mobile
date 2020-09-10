@@ -98,7 +98,7 @@
 
                     <Entry Grid.Column="1"
                            Placeholder="Email"
-                           Text="{Binding Usertag}"
+                           Text="{Binding Email}"
                            />
                     
                 </Grid>

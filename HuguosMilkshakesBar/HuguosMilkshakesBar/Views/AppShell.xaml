@@ -89,5 +89,10 @@
 
         <ShellContent x:Name="ItemsPage"
                           ContentTemplate="{DataTemplate views:HomePage}" />
+        
+    </FlyoutItem>
+    <FlyoutItem Title="Card">
+        <ShellContent x:Name="CatalogPage"
+                          ContentTemplate="{DataTemplate views:CatalogPage}" />
     </FlyoutItem>
 </Shell>

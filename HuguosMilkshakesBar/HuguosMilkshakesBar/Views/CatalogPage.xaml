@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HuguosMilkshakesBar.Views.CatalogPage">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Frame Padding="0" >
+                <Image x:Name="img"  Grid.Row="0" Aspect="AspectFill"   />
+
+            </Frame>
+            <CollectionView Grid.Row="1" ItemsSource="{Binding Milkshakes}">
+                <!--Create two colums-->
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical"
+                        Span="2" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame CornerRadius="5" Padding="0">
+                                <Grid>
+                                    <!-- Put the picture in background -->
+                                <Image Aspect="AspectFit" Source="{Binding Picture}" />
+                                <Label Text="{Binding Picture}"/>
+                                </Grid>
+                            </Frame>
+                    </DataTemplate>
+
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

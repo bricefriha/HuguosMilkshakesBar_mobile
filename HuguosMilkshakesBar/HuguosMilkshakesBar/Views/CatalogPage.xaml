@@ -8,10 +8,6 @@
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Frame Padding="0" >
-                <Image x:Name="img"  Grid.Row="0" Aspect="AspectFill"   />
-
-            </Frame>
             <CollectionView Grid.Row="1" ItemsSource="{Binding Milkshakes}">
                 <!--Create two colums-->
                 <CollectionView.ItemsLayout>
@@ -20,13 +16,22 @@
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame CornerRadius="5" Padding="0">
+                        <Grid Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Frame CornerRadius="15" Padding="0" BackgroundColor="Beige" HeightRequest="150" WidthRequest="180" >
                                 <Grid>
                                     <!-- Put the picture in background -->
-                                <Image Aspect="AspectFit" Source="{Binding Picture}" />
-                                <Label Text="{Binding Picture}"/>
+                                    <Image Aspect="AspectFill" Source="{Binding Picture}" />
                                 </Grid>
                             </Frame>
+                        </Grid>
                     </DataTemplate>
 
                 </CollectionView.ItemTemplate>

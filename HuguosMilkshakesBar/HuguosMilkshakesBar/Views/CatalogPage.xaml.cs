@@ -17,7 +17,6 @@ namespace HuguosMilkshakesBar.Views
             InitializeComponent();
 
             BindingContext = new CatalogViewModel();
-            img.Source = ImageSource.FromUri(new Uri("https://lorempixel.com/1920/1080/sports/7/"));
         }
     }
 }

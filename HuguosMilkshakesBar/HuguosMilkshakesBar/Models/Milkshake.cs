@@ -16,11 +16,5 @@ namespace HuguosMilkshakesBar.Models
         public string Description { get; set; }
         [JsonProperty("price")]
         public string Price { get; set; }
-        //public Uri Picture
-        //{ 
-        //    get {
-        //        return new Uri(PictureString);
-        //    }
-        //}
     }
 }

@@ -15,6 +15,6 @@ namespace HuguosMilkshakesBar.Models
         [JsonProperty("description")]
         public string Description { get; set; }
         [JsonProperty("price")]
-        public string Price { get; set; }
+        public double Price { get; set; }
     }
 }

@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="HuguosMilkshakesBar.Views.CatalogPage">
+             x:Class="HuguosMilkshakesBar.Views.CatalogPage"
+             Shell.BackgroundColor="{DynamicResource FontColour}">
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
@@ -25,10 +26,32 @@
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
-                            <Frame CornerRadius="15" Padding="0" BackgroundColor="Beige" HeightRequest="150" WidthRequest="180" >
+                            <Frame CornerRadius="15" Padding="0" BackgroundColor="Beige" BorderColor="{DynamicResource FontColour}" HeightRequest="150" WidthRequest="180" >
                                 <Grid>
                                     <!-- Put the picture in background -->
                                     <Image Aspect="AspectFill" Source="{Binding Picture}" />
+                                    
+                                    <!-- Banner -->
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="60" />
+                                        </Grid.RowDefinitions>
+                                        
+                                        <!-- Banner background -->
+                                        <BoxView Grid.Row="1" Opacity="0.8" BackgroundColor="{DynamicResource GoodWhite}"/>
+                                        
+                                        <StackLayout Grid.Row="1" Margin="10,0,0,0">
+                                            <Label Text="{Binding Name}" 
+                                                   TextColor="{DynamicResource FontColour}"
+                                                   FontFamily="{DynamicResource Semibold}"
+                                                   FontSize="17"/>
+                                            <Label Text="{Binding Price, StringFormat='€{0}'} "
+                                                   TextColor="{DynamicResource FontColour}"
+                                                   FontFamily="{DynamicResource Bold}"
+                                                   FontSize="17"/>
+                                        </StackLayout>
+                                    </Grid>
                                 </Grid>
                             </Frame>
                         </Grid>

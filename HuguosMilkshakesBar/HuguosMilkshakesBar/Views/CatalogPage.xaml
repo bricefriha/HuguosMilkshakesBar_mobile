@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:HuguosMilkshakesBar.Viewmodels"
              x:Class="HuguosMilkshakesBar.Views.CatalogPage"
              Shell.BackgroundColor="{DynamicResource FontColour}">
     <ContentPage.Content>
@@ -26,7 +27,10 @@
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
-                            <Frame CornerRadius="15" Padding="0" BackgroundColor="Beige" BorderColor="{DynamicResource FontColour}" HeightRequest="150" WidthRequest="180" >
+                            <Frame  CornerRadius="15" Padding="0" BorderColor="{DynamicResource FontColour}" HeightRequest="150" WidthRequest="180" x:Uid="{Binding Id}" >
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:CatalogViewModel}}, Path=ToDetail}" CommandParameter="{Binding Id}"/>
+                                </Frame.GestureRecognizers>
                                 <Grid>
                                     <!-- Put the picture in background -->
                                     <Image Aspect="AspectFill" Source="{Binding Picture}" />

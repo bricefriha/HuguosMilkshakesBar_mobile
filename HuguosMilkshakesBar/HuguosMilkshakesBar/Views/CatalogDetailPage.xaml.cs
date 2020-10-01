@@ -10,18 +10,14 @@ using Xamarin.Forms.Xaml;
 namespace HuguosMilkshakesBar.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CatalogPage : ContentPage
+    public partial class CatalogDetailPage : ContentPage
     {
-        public CatalogPage()
+        private CatalogDetailViewModel _vm;
+        public CatalogDetailPage(string milkshakeId)
         {
             InitializeComponent();
 
-            BindingContext = new CatalogViewModel();
-        }
-
-        private void CatItem_Tapped(object sender, EventArgs e)
-        {
-            //Navigation.PushAsync(new CatalogDetailPage(((Frame)sender).CommandParameter.ToString()));
+            BindingContext = new CatalogDetailViewModel(milkshakeId);
         }
     }
 }

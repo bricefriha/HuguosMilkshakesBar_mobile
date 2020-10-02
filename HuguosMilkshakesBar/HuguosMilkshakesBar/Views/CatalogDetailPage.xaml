@@ -5,10 +5,17 @@
              Title="{Binding Milkshake.Name}"
              Shell.BackgroundColor="{DynamicResource FontColour}">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Margin="10">
+            <!-- Picture of it -->
+            <Frame Padding="0" 
+                   HeightRequest="180"
+                   HasShadow="True"
+                   CornerRadius="8"
+                   >
+                <Image Aspect="AspectFill"
+                       Source="{Binding Milkshake.Picture}"/>
+
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -18,10 +18,5 @@ namespace HuguosMilkshakesBar.Views
 
             BindingContext = new CatalogViewModel();
         }
-
-        private void CatItem_Tapped(object sender, EventArgs e)
-        {
-            //Navigation.PushAsync(new CatalogDetailPage(((Frame)sender).CommandParameter.ToString()));
-        }
     }
 }

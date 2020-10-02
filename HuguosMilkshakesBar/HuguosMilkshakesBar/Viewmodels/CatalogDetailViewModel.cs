@@ -20,6 +20,23 @@ namespace HuguosMilkshakesBar.Viewmodels
             set
             {
                 _milkshake = value;
+                
+                // Define the descripotion length
+                double length = _milkshake.Description.Length /1.5 ;
+                DescriptionHeight = (length < 50) ? 50 : length;
+                OnPropertyChanged();
+            }
+        }
+        private double _descriptionHeight;
+        public double DescriptionHeight
+        {
+            get
+            {
+                return _descriptionHeight;
+            }
+            set
+            {
+                _descriptionHeight = value;
                 OnPropertyChanged();
             }
         }

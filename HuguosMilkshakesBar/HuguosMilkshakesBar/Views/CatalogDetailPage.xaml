@@ -5,7 +5,7 @@
              Title="{Binding Milkshake.Name}"
              Shell.BackgroundColor="{DynamicResource FontColour}">
     <ContentPage.Content>
-        <StackLayout Margin="10">
+        <StackLayout Margin="10" Spacing="15">
             <!-- Picture of it -->
             <Frame Padding="0" 
                    HeightRequest="180"
@@ -15,6 +15,39 @@
                 <Image Aspect="AspectFill"
                        Source="{Binding Milkshake.Picture}"/>
 
+            </Frame>
+            <!-- Decription -->
+            <Frame Padding="0"
+                   HasShadow="True"
+                   CornerRadius="8">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="{Binding DescriptionHeight}"/>
+                    </Grid.RowDefinitions>
+                    
+                    <!-- Header -->
+                    <ContentView Grid.Row="0"
+                                 BackgroundColor="{DynamicResource PrimaryColour}"
+                                 Padding="0">
+                        <Label Text="Description"
+                               HorizontalOptions="Start"
+                               FontSize="15"
+                               TextColor="{DynamicResource GoodWhite}"
+                               FontFamily="{DynamicResource SemiBold}"
+                               Margin="10"/>
+                    </ContentView>
+                    
+                    <!-- Content -->
+                    <Label Grid.Row="1"
+                           Text="{Binding Milkshake.Description}"
+                               HorizontalOptions="Start"
+                               FontSize="14"
+                               TextColor="{DynamicResource FontColour}"
+                               FontFamily="{DynamicResource SemiBold}"
+                               Margin="10"/>
+                    
+                </Grid>
             </Frame>
         </StackLayout>
     </ContentPage.Content>

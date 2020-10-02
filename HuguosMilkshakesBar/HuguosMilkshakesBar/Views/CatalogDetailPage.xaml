@@ -25,7 +25,7 @@
                         <RowDefinition Height="40"/>
                         <RowDefinition Height="{Binding DescriptionHeight}"/>
                     </Grid.RowDefinitions>
-                    
+
                     <!-- Header -->
                     <ContentView Grid.Row="0"
                                  BackgroundColor="{DynamicResource PrimaryColour}"
@@ -37,7 +37,7 @@
                                FontFamily="{DynamicResource SemiBold}"
                                Margin="10"/>
                     </ContentView>
-                    
+
                     <!-- Content -->
                     <Label Grid.Row="1"
                            Text="{Binding Milkshake.Description}"
@@ -46,9 +46,78 @@
                                TextColor="{DynamicResource FontColour}"
                                FontFamily="{DynamicResource SemiBold}"
                                Margin="10"/>
-                    
                 </Grid>
             </Frame>
+
+            <!-- Price -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0"
+                       Text="Price:"
+                       FontSize="20"
+                       Margin="10,0,0,0"
+                       VerticalOptions="Center"
+                       TextColor="{DynamicResource FontColour}"
+                       FontFamily="{DynamicResource SemiBold}"/>
+                <Label Grid.Column="1"
+                       Text="{Binding Milkshake.Price, StringFormat='€{0}'}"
+                       FontSize="25"
+                       TextColor="{DynamicResource FontColour}"
+                       FontFamily="{DynamicResource Bold}"/>
+            </Grid>
+            <!-- Quantity -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="110"/>
+                    <ColumnDefinition Width="117"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0"
+                       Text="Quantity:"
+                       FontSize="20"
+                       Margin="10,0,0,0"
+                       VerticalOptions="Center"
+                       TextColor="{DynamicResource FontColour}"
+                       FontFamily="{DynamicResource SemiBold}"/>
+                <Frame Grid.Column="1"
+                       HeightRequest="33"
+                       Padding="0"
+                       CornerRadius="10">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="37"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="37"/>
+                        </Grid.ColumnDefinitions>
+                        <!-- Add a quantity -->
+                        <Button Grid.Column="2"
+                                BackgroundColor="{DynamicResource PrimaryColour}"
+                                FontFamily="{DynamicResource FA-Solid}" 
+                                TextColor="{DynamicResource GoodWhite}"
+                                FontSize="15"
+                                Text="&#xf067;"
+                                />
+                        <!-- Current quantity -->
+                        <Label Text="1" 
+                               Grid.Column="1"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               FontSize="15"/>
+                        <!-- Remove a quantity -->
+                        <Button Grid.Column="0"
+                                BackgroundColor="{DynamicResource PrimaryColour}"
+                                FontFamily="{DynamicResource FA-Solid}"
+                                TextColor="{DynamicResource GoodWhite}"
+                                FontSize="15"
+                                Text="&#xf068;"
+                                />
+
+                    </Grid>
+                        
+                </Frame>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

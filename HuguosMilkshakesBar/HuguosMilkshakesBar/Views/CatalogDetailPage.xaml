@@ -118,6 +118,13 @@
                         
                 </Frame>
             </Grid>
+            <Button Margin="0,30,0,0"
+                    BackgroundColor="{DynamicResource PrimaryColour}"
+                    FontFamily="{DynamicResource SemiBold}"
+                    TextColor="{DynamicResource GoodWhite}"
+                    FontSize="15"
+                    Text="Add to my basket"
+                    CornerRadius="8" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
